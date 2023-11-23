@@ -1,0 +1,9 @@
+FROM node:18-alpine
+WORKDIR /app
+COPY ./apps/frontend/package.json ./apps/backend/yarn.lock* ./
+RUN yarn install
+COPY ./apps/frontend/next.config.js .
+COPY ./apps/frontend/tsconfig*.json .
+COPY ./apps/frontend/postcss.config.js .
+COPY ./apps/frontend/tailwind.config.ts .
+CMD ["yarn", "dev"]
